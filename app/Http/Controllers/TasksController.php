@@ -13,9 +13,10 @@ class TasksController extends Controller
     public function index()
     {
         $tasks = Task::all();
-        return response()->json([
-            'tasks' => $tasks
-        ]);
+        return response()->json(
+            // 'tasks' => $tasks
+            $tasks
+        );
     }
 
 
@@ -23,25 +24,12 @@ class TasksController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
+
     public function store(Request $request)
     {
-
-        $task = new Task;
-
-        $task->title = $request->input('title');
-        $task->description = $request->input('description');
-        $task->date = $request->input('date');
-        $task->location = $request->input('location');
-        $task->responsible = $request->input('responsible');
-        $task->likes = $request->input('likes');
-
-
-        $task->save();
-
-        return response()->json([
-            'message' => 'Registro creado',
-            'task' => $task
-        ]);
+        $task = Task::create($request->all());
+        return response()->json($task, 201);
     }
 
 
@@ -51,25 +39,13 @@ class TasksController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    /*     
+
     public function update(Request $request, $id)
     {
-
-
         $task = Task::find($id);
-
-        $task->title = $request->input('title');
-        $task->description = $request->input('description');
-        $task->date = $request->input('date');
-        $task->location = $request->input('location');
-        $task->responsible = $request->input('responsible');
-        $task->likes = $request->input('likes');
-
-        $task->save();
-
-        return response()->json([
-            'message' => 'Registro modificado',
-            'task' => $task
-        ]);
+        $task->update($request->all());
+        return response()->json($task, 200);
     }
 
     /**

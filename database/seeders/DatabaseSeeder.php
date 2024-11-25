@@ -16,18 +16,10 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-       /*  User::factory()->create([
+        /*  User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
  */
-       Task::factory()->create([
-            'title' => 'Limpieza',
-            'description' => 'limpiar parque',
-            'date' => '2024-12-12',
-            'location' => 'Guadalajara',
-            'responsible' => 'Jose',            
-            'likes' =>2
-        ]);
     }
 }

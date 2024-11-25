@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('location', 255);
             $table->string('responsible', 255);
             $table->integer('likes')->default(0);
+            $table->timestamps();
         });
     }
 
