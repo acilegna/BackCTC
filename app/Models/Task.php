@@ -10,7 +10,7 @@ class Task extends Model
     protected $table = 'tasks';
     protected $primaryKey = 'id';
     public $timestamps = false;
-    //lista blanca atributos que deberían ser asignables en masa
+
     protected $fillable =
     [
         'title',

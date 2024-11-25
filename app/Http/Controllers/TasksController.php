@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 
 class TasksController extends Controller
 {
@@ -13,10 +14,17 @@ class TasksController extends Controller
     public function index()
     {
         $tasks = Task::all();
-        return response()->json(
-            // 'tasks' => $tasks
-            $tasks
-        );
+
+        if ($tasks->count() > 0) {
+            return response()->json(
+                $tasks
+            );
+        } else {
+            return response()->json([
+                'status' => 404,
+                'tasks' => 'No se encontraron registros'
+            ], 404);
+        }
     }
 
 
@@ -29,7 +37,18 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         $task = Task::create($request->all());
-        return response()->json($task, 201);
+        if ($task) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Tarea creada',
+
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 500,
+                'message' => 'Error'
+            ], 500);
+        }
     }
 
 
@@ -39,14 +58,24 @@ class TasksController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    /*     
+    /*       */
 
     public function update(Request $request, $id)
     {
         $task = Task::find($id);
-        $task->update($request->all());
-        return response()->json($task, 200);
+
+        if ($task) {
+            $task->update($request->all());
+            return response()->json($task, 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Registro no encontrado'
+            ], 404);
+        }
     }
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -54,13 +83,22 @@ class TasksController extends Controller
     public function destroy(string $id)
     {
         $task = Task::find($id);
+        if ($task) {
 
-        $task->delete();
+            $task->delete();
 
-        return response()->json([
-            'message' => 'Registro eliminado'
-        ]);
+            return response()->json([
+                'status' => 200,
+                'message' => 'tarea eliminada'
+            ], 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Registro no encontrado'
+            ], 404);
+        }
     }
+
 
     /**
      * Display the specified resource.
