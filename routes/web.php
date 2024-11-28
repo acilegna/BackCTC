@@ -12,10 +12,14 @@ Route::post('/newtasks', [TasksController::class, 'store'])->name('newtasks');
 Route::put('/updatetasks/{id}', [TasksController::class, 'update'])->name('updatetasks');
 Route::delete('/deletetasks/{id}', [TasksController::class, 'destroy'])->name('deletetasks');
 
+Route::post('/increment/{id}/{likes}', [TasksController::class, 'incrementa'])->name('increment');
+
+Route::get('/whereId/{id}', [TasksController::class, 'allId'])->name('whereId');
  
  
 /* 
 URL Api
+http://127.0.0.1:8000/increment/35/1
 http: //127.0.0.1:8000/tasks
 http: //127.0.0.1:8000/newtasks
 http: //127.0.0.1:8000/updatetasks/5

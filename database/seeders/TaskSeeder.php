@@ -16,7 +16,7 @@ class TaskSeeder extends Seeder
         DB::table('tasks')->insert([
             'title' => 'Limpieza',
             'description' => 'limpiar parque',
-            'date' => '2024-12-12',
+            'date' => '2024-12-10',
             'location' => 'Guadalajara',
             'responsible' => 'Jose',
             'likes' => 2

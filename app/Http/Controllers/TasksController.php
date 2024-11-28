@@ -11,6 +11,22 @@ class TasksController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function allId($id)
+    {
+        $tasks = Task::find($id);
+
+        if ($tasks->count() > 0) {
+            return response()->json(
+                $tasks
+            );
+        } else {
+            return response()->json([
+                'status' => 404,
+                'tasks' => 'No se encontraron registros'
+            ], 404);
+        }
+    }
     public function index()
     {
         $tasks = Task::all();
@@ -99,6 +115,22 @@ class TasksController extends Controller
         }
     }
 
+    public function incrementa($id, $like)
+    {
+
+        $task = Task::find($id);
+        if ($task and $like) {
+            $incrementa = $task->likes + $like;
+            $task->likes = $incrementa;
+            $task->save();
+            return response()->json($task, 200);
+        } else {
+            return response()->json([
+                'status' => 404,
+                'message' => 'Registro no encontrado'
+            ], 404);
+        }
+    }
 
     /**
      * Display the specified resource.
