@@ -14,12 +14,12 @@ class TaskSeeder extends Seeder
     public function run(): void
     {
         DB::table('tasks')->insert([
-            'title' => 'Limpieza',
-            'description' => 'limpiar parque',
-            'date' => '2024-12-10',
+            'title' => 'Pintar',
+            'description' => 'Pintar baños',
+            'date' => now(),
             'location' => 'Guadalajara',
-            'responsible' => 'Jose',
-            'likes' => 2
+            'responsible' => 'Luis',
+            'likes' => 0
         ]);
     }
 }

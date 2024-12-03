@@ -14,7 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        //crearlos automáticamente cuando lancemos la migración de las tablas a la bd
+        User::factory(10)->create();
 
         /*  User::factory()->create([
             'name' => 'Test User',

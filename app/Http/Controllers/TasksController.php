@@ -12,21 +12,8 @@ class TasksController extends Controller
      * Display a listing of the resource.
      */
 
-    public function allId($id)
-    {
-        $tasks = Task::find($id);
 
-        if ($tasks->count() > 0) {
-            return response()->json(
-                $tasks
-            );
-        } else {
-            return response()->json([
-                'status' => 404,
-                'tasks' => 'No se encontraron registros'
-            ], 404);
-        }
-    }
+
     public function index()
     {
         $tasks = Task::all();
@@ -43,6 +30,21 @@ class TasksController extends Controller
         }
     }
 
+    public function allId($id)
+    {
+        $tasks = Task::find($id);
+
+        if ($tasks->count() > 0) {
+            return response()->json(
+                $tasks
+            );
+        } else {
+            return response()->json([
+                'status' => 404,
+                'tasks' => 'No se encontraron registros'
+            ], 404);
+        }
+    }
 
 
     /**
