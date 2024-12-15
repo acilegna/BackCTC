@@ -18,6 +18,7 @@ class Task extends Model
         'date',
         'location',
         'responsible',
+        'status',
         'likes'
     ];
 }

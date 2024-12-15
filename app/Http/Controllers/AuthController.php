@@ -44,6 +44,7 @@ class AuthController extends Controller
      */
     public function login()
     {
+        
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
@@ -70,6 +71,8 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+     
     public function logout()
     {
         auth()->logout();
@@ -82,6 +85,8 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
+
+     /* para actualizar el token  */
     public function refresh()
     {
         return $this->respondWithToken(auth()->refresh());

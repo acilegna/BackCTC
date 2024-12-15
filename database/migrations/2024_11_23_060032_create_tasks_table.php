@@ -19,8 +19,9 @@ return new class extends Migration
             $table->date('date');
             $table->string('location', 255);
             $table->string('responsible', 255);
+            $table->string('status', 255)->default('pendiente');
             $table->integer('likes')->default(0);
-            // $table->timestamps();
+            $table->timestamps();
         });
     }
 

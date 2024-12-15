@@ -19,6 +19,7 @@ class TaskSeeder extends Seeder
             'date' => now(),
             'location' => 'Guadalajara',
             'responsible' => 'Luis',
+            'status' => 'Pendiente',
             'likes' => 0
         ]);
     }
